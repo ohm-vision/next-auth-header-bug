@@ -1,20 +1,19 @@
-import { auth } from "auth"
+import {  getServerSession } from "auth"
 import ClientExample from "@/components/client-example"
-import { SessionProvider } from "next-auth/react"
+import { SessionProviderSafe } from "@/components/auth-components"
 
 export default async function ClientPage() {
-  const session = await auth()
+  const session = await getServerSession()
   if (session?.user) {
     session.user = {
       name: session.user.name,
       email: session.user.email,
-      picture: session.user.picture,
     } // filter out sensitive data
   }
 
   return (
-    <SessionProvider session={session}>
+    <SessionProviderSafe session={session}>
       <ClientExample />
-    </SessionProvider>
+    </SessionProviderSafe>
   )
 }

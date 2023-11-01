@@ -9,7 +9,7 @@ import CustomLink from "./custom-link"
 
 const UpdateForm = () => {
   const { data: session, update } = useSession()
-  const [name, setName] = useState(session?.user.name ?? "")
+  const [name, setName] = useState(session?.user?.name ?? "")
 
   if (!session) return null
   return (
@@ -29,7 +29,7 @@ const UpdateForm = () => {
       >
         <Input
           type="text"
-          placeholder={session.user.name ?? ""}
+          placeholder={session.user?.name ?? ""}
           value={name}
           onChange={(e) => {
             setName(e.target.value)

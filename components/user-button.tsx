@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { Button } from "./ui/button"
-import { auth } from "auth"
+import { getServerSession } from "auth"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,15 +11,15 @@ import {
 import { SignIn, SignOut } from "./auth-components"
 
 export default async function UserButton() {
-  const session = await auth()
+  const session = await getServerSession()
   return session ? (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative w-8 h-8 rounded-full">
           <Avatar className="w-8 h-8">
-            {session.user?.picture && (
+            {session.user?.image && (
               <AvatarImage
-                src={session.user?.picture}
+                src={session.user?.image}
                 alt={session.user?.name ?? ""}
               />
             )}

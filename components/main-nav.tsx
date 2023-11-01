@@ -50,6 +50,14 @@ export function MainNav() {
               Client Side
             </NavigationMenuLink>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/bug-example"
+              className={navigationMenuTriggerStyle()}
+            >
+              Bug Reproduction
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </div>
